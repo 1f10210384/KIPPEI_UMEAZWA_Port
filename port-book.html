@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    body {
+      display: flex;
+      align-items: center; /* ボディ内のコンテンツを垂直方向に中央に配置 */
+      justify-content: center; /* ボディ内のコンテンツを水平方向に中央に配置 */
+      height: 100vh; /* ビューポートの高さいっぱいに広げる */
+      margin: 0; /* マージンを削除して中央寄せを正確に行う */
+    }
+
+    #book1 {
+      display: flex;
+      flex-direction: row;
+      perspective: 1000px;
+    }
+
+    .page, .page-lock {
+      width: 400px;
+      height: 600px;
+      border: 1px solid black;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: 1s;
+      box-sizing: border-box;
+      overflow: hidden;
+      margin: 0; /* ページのマージンを削除 */
+    }
+
+    .page {
+      transform-origin: left center; /* ページの中央を基準に回転 */
+    }
+
+    .left-page,
+    .right-page {
+      height: 100%;
+      position: absolute;
+      top: 0;
+      box-sizing: border-box;
+      transition: opacity 1s;
+      display: flex; /* 中央寄せのために追加 */
+      align-items: center; /* 垂直方向に中央寄せ */
+      justify-content: center; /* 水平方向に中央寄せ */
+    }
+
+    .left-page {
+      left: 0;
+      background-color: #e6e6e6;
+      transform: rotateY(0deg);
+    }
+
+    .right-page {  
+      transform: rotateY(0deg);
+    }
+
+    #book1.flip .page {
+      transform: rotateY(-180deg);
+    }
+
+    #book1.flip .left-page,
+    #book1.flip .right-page {
+      opacity: 0;
+    }
+
+    .left-page img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      margin: auto;
+    }
+
+    .right-page p {
+      text-align: center;
+      margin: 0; /* パラグラフのマージンを削除 */
+    }
+  </style>
+</head>
+<body>
+
+<div id="book1">
+  <div class="page-lock">
+    <div class="left-page">
+      <img src="野菜.png" alt="Photo">
+    </div>
+  </div>
+  <div class="page">
+    <div class="right-page">
+      <p>Your text goes here.</p>
+    </div>
+  </div>
+</div>
+
+<button onclick="flipBook()">Flip Book</button>
+
+<script>
+  function flipBook() {
+    var book = document.getElementById('book1');
+    book.classList.toggle('flip');
+  }
+</script>
+
+</body>
+</html>
