@@ -17,9 +17,9 @@
             height: 100vh;
         }
 
-        .title {
+        .profile {
             text-align: center;
-            margin: 200px;
+            margin: 250px;
         }
 
         .portfolio {
@@ -33,7 +33,7 @@
 
         button {
             width: 140px;
-            z-index: 1;
+            z-index: 2;
         }
 
         .portfolio-item {
@@ -47,7 +47,6 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-            z-index: -1;
         }
 
         @keyframes fadeInLeft {
@@ -73,7 +72,7 @@
 
         @media (max-width: 767px) {
             .portfolio-item {
-                width: calc(100% - 40px);
+                width: calc(80% - 40px);
                 max-width: 80%;
             }
             .tag-filter button {
@@ -99,11 +98,39 @@
             margin: 10px;
         }
 
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 40px; /* 上下1%、左右0に設定 */
+            width: 100%;
+            box-sizing: border-box; /* パディングが要素の幅に含まれるようにするために追加 */
+        }
+        
+        .footer-position{
+            margin-bottom: 60px;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="title">
+    <div class="profile">
         <h1>UMEZAWA KIPPEI</h1>
         <h3>Profile</h3>
         <p>東洋大学 情報連携学部 情報連携学科</p>
@@ -111,19 +138,19 @@
 
     <div class="tag-header">
         <div class="tag-filter">
-            <button class="btn btn-secondary" onclick="filterPortfolio('all')">ALL</button>
+            <button class="btn btn-secondary" data-number="1" onclick="filterAndRipple(1, 'all')">ALL</button>
         </div>
         <div class="tag-filter">
-            <button class="btn btn-secondary" onclick="filterPortfolio('design')">デザイン</button>
+            <button class="btn btn-secondary" data-number="2" onclick="filterAndRipple(2, 'design')">デザイン</button>
         </div>
         <div class="tag-filter">
-            <button class="btn btn-secondary" onclick="filterPortfolio('project')">企画</button>
+            <button class="btn btn-secondary" data-number="3" onclick="filterAndRipple(3, 'project')">企画</button>
         </div>
         <div class="tag-filter">
-            <button class="btn btn-secondary" onclick="filterPortfolio('web')">WEBデザイン</button>
+            <button class="btn btn-secondary" data-number="4" onclick="filterAndRipple(4, 'web')">WEBデザイン</button>
         </div>
         <div class="tag-filter">
-            <button class="btn btn-secondary" onclick="filterPortfolio('trpg')">TRPG制作</button>
+            <button class="btn btn-secondary" data-number="5" onclick="filterAndRipple(5, 'trpg')">TRPG制作</button>
         </div>
     </div>
 
@@ -132,8 +159,8 @@
             <img src="野菜.png" alt="作品の画像">
             <div class="details">
                 <h2>作品のタイトル1</h2>
-                <p>作品の説明や詳細な情報などをここに追加します。</p>
-                <a class="btn btn-primary" href="#" role="button">Link</a>
+                <p>作品の説明<br>や詳細な情報などをここに追加します。どれだけいけばいいのだろうか？ しらねーよぼけ、はいはいはい</p>
+                <a href="https://drive.google.com/file/d/1Uz8QSYxAQTC2jYs2EZBLIiCToc6_3rPL/view?usp=sharing" role="button">Link</a>
             </div>
         </div>
 
@@ -180,6 +207,11 @@
 
     </div>
 
+    <div class="footer-position"></div>
+
+    <footer class="footer">
+        <p>KIPPEI UMEZAWA © 2024</p>
+    </footer>
 
 
     <script>
@@ -208,7 +240,35 @@
                 }
             });
         }
-       
+
+        // クリック波紋を発生させる関数
+        function addRippleEffect(event) {
+            const ripple = document.createElement('span');
+            const rect = event.target.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+
+            // クリックした位置を中心に設定
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            ripple.classList.add('ripple');
+            event.target.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        // タグフィルターとクリック波紋を適用する関数
+        function filterAndRipple(number, tag) {
+            filterPortfolio(tag); // タグフィルターを適用
+            const clickedButton = document.querySelector(`.tag-filter button[data-number="${number}"]`);
+            addRippleEffect({ target: clickedButton }); // クリック波紋を発生させる
+        }
     </script>
 
 </body>
