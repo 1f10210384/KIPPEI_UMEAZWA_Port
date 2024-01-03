@@ -1,0 +1,41 @@
+/* style.css */
+
+.top{
+    margin: 250px;
+}
+
+/* プロフィールセクションに対するスタイルを追加 */
+.profile-section {
+    background-color: #f8f9fa; /* 背景色 */
+    padding: 40px; /* 内側の余白 */
+    text-align: center;
+}
+
+.profile-container {
+    max-width: 1200px; /* コンテンツの最大幅 */
+    margin: 0 auto; /* 中央配置 */
+}
+
+/* プロフィール内容に左右の余白を設ける */
+.profile-content {
+    margin: 0 10%; /* 左右の余白を10%に設定 */
+    text-align: left; /* プロフィール内容を左揃えにする */
+}
+
+/* 他のスタイルはそのまま */
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 40px; /* 上下1%、左右0に設定 */
+    width: 100%;
+    box-sizing: border-box; /* パディングが要素の幅に含まれるようにするために追加 */
+}
+
+.footer-position{
+    margin-bottom: 60px;
+}
+
+.name{
+    margin-bottom: 50px;
+}

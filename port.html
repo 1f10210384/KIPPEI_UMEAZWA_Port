@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .title {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .tag-header {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag-filter {
+            margin: 10px;
+        }
+
+        .portfolio {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1000px; /* 必要に応じて調整 */
+            width: 100%;
+            margin: 20px;
+        }
+
+        .portfolio-item {
+            width: 400px; /* 必要に応じて調整 */
+            margin: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            order: 2;
+            transition: order 0.3s ease-in-out;
+        }
+
+        .portfolio-item .details {
+            padding: 10px;
+            text-align: center;
+            order: 1;
+            transition: order 0.3s ease-in-out;
+        }
+
+        @media (max-width: 767px) {
+            .portfolio-item {
+                flex-direction: column;
+            }
+
+            .portfolio-item img {
+                order: 1;
+            }
+
+            .portfolio-item .details {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="title">UMEZAWA KIPPEI</h1>
+
+    <div class="tag-header">
+        <div class="tag-filter">
+            <button onclick="filterPortfolio('all')">All</button>
+        </div>
+        <div class="tag-filter">
+            <button onclick="filterPortfolio('tag1')">Tag 1</button>
+        </div>
+        <div class="tag-filter">
+            <button onclick="filterPortfolio('tag2')">Tag 2</button>
+        </div>
+        <!-- 必要に応じて他のタグを追加 -->
+    </div>
+
+    <div class="portfolio">
+        <div class="portfolio-item" data-tags="tag1">
+            <img src="野菜.png" alt="作品の画像">
+            <div class="details">
+                <h2>作品のタイトル1</h2>
+                <p>作品の説明や詳細な情報などをここに追加します。</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-tags="tag2">
+            <img src="野菜.png" alt="作品の画像">
+            <div class="details">
+                <h2>作品のタイトル2</h2>
+                <p>作品の説明や詳細な情報などをここに追加します。</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-tags="tag2">
+            <img src="野菜.png" alt="作品の画像">
+            <div class="details">
+                <h2>作品のタイトル2</h2>
+                <p>作品の説明や詳細な情報などをここに追加します。</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-tags="tag2">
+            <img src="野菜.png" alt="作品の画像">
+            <div class="details">
+                <h2>作品のタイトル2</h2>
+                <p>作品の説明や詳細な情報などをここに追加します。</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-tags="tag2">
+            <img src="野菜.png" alt="作品の画像">
+            <div class="details">
+                <h2>作品のタイトル2</h2>
+                <p>作品の説明や詳細な情報などをここに追加します。</p>
+            </div>
+        </div>
+
+        <div class="portfolio-item" data-tags="tag2">
+            <img src="野菜.png" alt="作品の画像">
+            <div class="details">
+                <h2>作品のタイトル2</h2>
+                <p>作品の説明や詳細な情報などをここに追加します。</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function filterPortfolio(tag) {
+            const items = document.querySelectorAll('.portfolio-item');
+
+            items.forEach(item => {
+                const tags = item.getAttribute('data-tags');
+                if (tag === 'all' || tags.includes(tag)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
+
