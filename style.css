@@ -1,29 +1,80 @@
 /* style.css */
 
-.top{
-    margin: 250px;
+.top {
+    margin: 0; /* 上マージンを0に設定 */
+    height: 100vh; /* ビューポートの高さいっぱいにする */
+    background-image: url('そんなやつはいない.jpg'); /* 画像のURLを指定 */
+    background-size: cover; /* 画像をカバーするように調整 */
+    background-position: center; /* 画像を中央に配置 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+@media only screen and (max-width: 600px) {
+    .top {
+        height: 30vh;
+    }
+}
+
+/* タブレットサイズのスタイル */
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .top {
+        height: 42vh;
+    }
+}
+
+/* デスクトップサイズのスタイル */
+
+@media only screen and (min-width: 1025px) {
+    .top {
+        height: 80vh;
+    }
+}
+
+.navbar {
+    z-index: 1000; /* 追加：z-indexを指定して最前面に表示 */
 }
 
 /* プロフィールセクションに対するスタイルを追加 */
 .profile-section {
-    background-color: #f8f9fa; /* 背景色 */
-    padding: 40px; /* 内側の余白 */
+    background: linear-gradient(to bottom, #f998cd, #ffffff);  /* 背景色 */
+    padding: 20px; /* 内側の余白 */
     text-align: center;
 }
 
 .profile-container {
-    max-width: 1200px; /* コンテンツの最大幅 */
+    max-width: 1400px; /* コンテンツの最大幅 */
     margin: 0 auto; /* 中央配置 */
+}
+
+.profile-back{
+    background-color: #fff;
+    margin: 0 2%;
 }
 
 /* プロフィール内容に左右の余白を設ける */
 .profile-content {
-    margin: 0 10%; /* 左右の余白を10%に設定 */
+    margin: 20px 10%; /* 左右の余白を10%に設定 */
     text-align: left; /* プロフィール内容を左揃えにする */
 }
 
+section {
+	position: sticky;
+	top: 0;
+}
+
+.self-introduction{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
 /* 他のスタイルはそのまま */
 .footer {
+    margin-top: 20px;
     background-color: black;
     color: white;
     text-align: center;
@@ -37,5 +88,6 @@
 }
 
 .name{
+    margin-top: 20px;
     margin-bottom: 50px;
 }
