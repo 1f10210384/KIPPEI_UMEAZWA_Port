@@ -20,6 +20,10 @@
             background-position: center; /* 背景を中央に配置 */
         }
 
+        h1{
+            font-size: 60px;
+        }
+
         .profile {
             text-align: center;
             margin-top: 300px;
@@ -86,11 +90,25 @@
             font-size: 16px;
         }
 
+        @media (max-width: 550px) {
+            h1{
+                font-size: 45px;
+            }
+            .portfolio-item{
+                width: 450px;
+            }
+            .portfolio-item img {
+                height: 160px;
+            }
+
+        }
+
         @media (max-width: 767px) {
             body {
                 background-image: url('portfolio3.jpg');
                 /* 別の画像へのパスを指定してください */
             }
+            
             .portfolio-item {
                 width: calc(80% - 40px);
                 max-width: 80%;
@@ -169,7 +187,7 @@
     
 
     <div class="profile">
-        <h1 style="font-size: 60px;"><strong>梅澤 吉平</strong></h1>
+        <h1><strong>梅澤 吉平</strong></h1>
         <p><strong>プランナー・デザイナー</strong></p>
     </div>
 
