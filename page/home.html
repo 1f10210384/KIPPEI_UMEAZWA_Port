@@ -90,18 +90,17 @@
             font-size: 16px;
         }
 
-        @media (max-width: 550px) {
-            h1{
-                font-size: 45px;
-            }
-            .portfolio-item{
-                width: 450px;
-            }
-            .portfolio-item img {
-                height: 160px;
-            }
-
+        .tag-filter {
+            margin: 10px;
         }
+
+        .tag-header {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            gap: 10px;
+        }
+
 
         @media (max-width: 767px) {
             body {
@@ -125,15 +124,30 @@
             }
         }
 
-        .tag-header {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            gap: 10px;
-        }
+        @media (max-width: 550px) {
+            h1{
+                font-size: 45px;
+            }
+            .portfolio-item{
+                width: 450px;
+            }
+            .portfolio-item img {
+                height: 160px;
+            }
+            .tag-filter{
+                margin: 4px;
+            }
+            .tag-header{
+                left: 1px;
+                top:5px;
+            }
+            .tag-filter button{
+                height: 40px;
+                width: 40px;
+                border-radius: 100%;
+                font-size: 6px;
+            }
 
-        .tag-filter {
-            margin: 10px;
         }
 
         .ripple {
@@ -171,6 +185,10 @@
             border: 1px solid #ced4da; /* タグを囲む線の色 */
             border-radius: 5px; /* タグの角を丸くする */
             margin-top: 5px; /* タグとタイトルの間に余白を追加 */
+        }
+
+        .navbar{
+            z-index: 100px;
         }
 
         
